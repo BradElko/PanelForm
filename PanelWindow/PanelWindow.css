@@ -1,0 +1,14 @@
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0px;
+}
+
+#container{
+    border:1px solid red;
+    position:absolute;
+    width:100%;
+    height:100%;
+}
