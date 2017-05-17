@@ -23,7 +23,7 @@ namespace CustomForm_Practice_1
         {
             InitializeComponent();
         }
-        private void rightClickMenu_Paint(object sender, PaintEventArgs e)
+        private void OverPanel_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle,
                 Color.Red, 1, ButtonBorderStyle.Solid,
@@ -36,10 +36,10 @@ namespace CustomForm_Practice_1
             if (CustomForm.MouseRightClickOverForm)
             {
                 CustomForm.rightclickmenuform.Show();
-                CustomForm.rightclickmenuform.Location = new Point(Cursor.Position.X, Cursor.Position.Y);
+                CustomForm.rightclickmenuform.Location = new Point(Cursor.Position.X + 1, Cursor.Position.Y + 1);
                 CustomForm.rightclickmenuform.BringToFront();
                 CustomForm.MouseRightClickOverForm = false;
-                rcmTimer.Interval = 500;
+                rcmTimer.Interval = 1500;
                 rcmTimer.Start();
                 rcmTimer.Tick += rcmTimer_Tick;
             }
@@ -49,9 +49,7 @@ namespace CustomForm_Practice_1
             if (rcmTimerFinished)
             {
                 CustomForm.rightclickmenuform.Hide();
-                rcmTimer.Interval = 500;
             }
-
         }
         private bool MouseInControl(Control ctrl)
         {
@@ -59,7 +57,7 @@ namespace CustomForm_Practice_1
             if(mouseInControl)
             {
                 rcmTimer.Stop();
-                rcmTimer.Interval = 500;
+                rcmTimer.Interval = 1500;
             }
             else
             {
@@ -68,24 +66,21 @@ namespace CustomForm_Practice_1
             //Console.WriteLine(mouseInControl);
             return mouseInControl;
         }
-        private void rightClickMenu_MouseEnter(object sender, EventArgs e)
-        {
-            MouseInControl(this);
-        }
-        private void rightClickMenu_MouseLeave(object sender, EventArgs e)
-        {
-            MouseInControl(this);
-        }
         private static void rcmTimer_Tick(object sender, EventArgs e)
         {
             rcmTimerFinished = true;
             rcmTimer.Stop();
+            rcmTimer.Interval = 1500;
             HideRightClickMenu();
         }
-
-        private void rightClickMenu_MouseMove(object sender, MouseEventArgs e)
+        private void OverPanel_MouseEnter(object sender, EventArgs e)
         {
-
+            rcmTimer.Stop();
+            rcmTimer.Interval = 1500;
+        }
+        private void OverPanel_MouseLeave(object sender, EventArgs e)
+        {
+            CustomForm.rightclickmenuform.Hide();
         }
     }
 }

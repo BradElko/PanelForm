@@ -32,6 +32,7 @@
             this.rcmMenuLabel = new System.Windows.Forms.Label();
             this.rcmSetupPanel = new System.Windows.Forms.Panel();
             this.rcmSetupLabel = new System.Windows.Forms.Label();
+            this.OverPanel = new CustomForm_Practice_1.ExtendedPanel();
             this.rcmMenuPanel.SuspendLayout();
             this.rcmSetupPanel.SuspendLayout();
             this.SuspendLayout();
@@ -74,22 +75,31 @@
             this.rcmSetupLabel.Text = "Setup";
             this.rcmSetupLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // OverPanel
+            // 
+            this.OverPanel.BackColor = System.Drawing.Color.Transparent;
+            this.OverPanel.Location = new System.Drawing.Point(1, 1);
+            this.OverPanel.Name = "OverPanel";
+            this.OverPanel.Opacity = 0;
+            this.OverPanel.Size = new System.Drawing.Size(152, 62);
+            this.OverPanel.TabIndex = 3;
+            this.OverPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OverPanel_Paint);
+            this.OverPanel.MouseEnter += new System.EventHandler(this.OverPanel_MouseEnter);
+            this.OverPanel.MouseLeave += new System.EventHandler(this.OverPanel_MouseLeave);
+            // 
             // rightClickMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(152, 62);
-            this.Controls.Add(this.rcmSetupPanel);
+            this.Controls.Add(this.OverPanel);
             this.Controls.Add(this.rcmMenuPanel);
+            this.Controls.Add(this.rcmSetupPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "rightClickMenu";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.rightClickMenu_Paint);
-            this.MouseEnter += new System.EventHandler(this.rightClickMenu_MouseEnter);
-            this.MouseLeave += new System.EventHandler(this.rightClickMenu_MouseLeave);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.rightClickMenu_MouseMove);
             this.rcmMenuPanel.ResumeLayout(false);
             this.rcmSetupPanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -102,5 +112,6 @@
         private System.Windows.Forms.Panel rcmSetupPanel;
         private System.Windows.Forms.Label rcmMenuLabel;
         private System.Windows.Forms.Label rcmSetupLabel;
+        private ExtendedPanel OverPanel;
     }
 }
