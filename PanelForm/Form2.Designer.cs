@@ -83,8 +83,6 @@
             this.OverPanel.Opacity = 0;
             this.OverPanel.Size = new System.Drawing.Size(152, 62);
             this.OverPanel.TabIndex = 3;
-            this.OverPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OverPanel_Paint);
-            this.OverPanel.MouseEnter += new System.EventHandler(this.OverPanel_MouseEnter);
             this.OverPanel.MouseLeave += new System.EventHandler(this.OverPanel_MouseLeave);
             // 
             // rightClickMenu
@@ -100,6 +98,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.rightClickMenu_Paint);
             this.rcmMenuPanel.ResumeLayout(false);
             this.rcmSetupPanel.ResumeLayout(false);
             this.ResumeLayout(false);

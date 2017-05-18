@@ -42,7 +42,7 @@
             this.TopPanel.Controls.Add(this.minimizeB1);
             this.TopPanel.Controls.Add(this.maximizeB1);
             this.TopPanel.Controls.Add(this.exitB1);
-            this.TopPanel.Location = new System.Drawing.Point(36, 32);
+            this.TopPanel.Location = new System.Drawing.Point(69, 32);
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Size = new System.Drawing.Size(663, 60);
             this.TopPanel.TabIndex = 0;
@@ -58,7 +58,7 @@
             // BottomPanel
             // 
             this.BottomPanel.BackColor = System.Drawing.Color.Silver;
-            this.BottomPanel.Location = new System.Drawing.Point(130, 140);
+            this.BottomPanel.Location = new System.Drawing.Point(140, 140);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(520, 275);
             this.BottomPanel.TabIndex = 1;
