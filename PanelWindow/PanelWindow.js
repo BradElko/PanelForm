@@ -4,7 +4,7 @@
     document.addEventListener("contextmenu", PanelFormContextMenu);
     function PanelFormLoaded(){   
         PanelForm.StartTimer = false;
-        PanelForm.CreatedContextMenu = false;
+        PanelForm.InvisibleContextMenu = true;
         PanelForm.PanelDivContainer = document.getElementById("container");
         PanelForm.CMContainer = document.createElement("div");
         PanelForm.CMMenuPanel = document.createElement("div");
@@ -15,9 +15,10 @@
     function PanelFormContextMenu(e){
         if(e.which === 3 || e.keyCode === 3 || e.button === 2){
             e.preventDefault();
-            if(PanelForm.CreatedContextMenu == false){
+            if(PanelForm.InvisibleContextMenu == true){
                 //Container
                 PanelForm.CMContainer.style.position = "absolute";
+                PanelForm.CMContainer.style.display = "block";
                 PanelForm.CMContainer.style.zIndex = 100;
                 PanelForm.CMContainer.style.width = 150 + "px";
                 PanelForm.CMContainer.style.height = 62 + "px";
@@ -60,26 +61,23 @@
                 PanelForm.CMContainer.appendChild(PanelForm.CMMenuPanel);
                 PanelForm.CMContainer.appendChild(PanelForm.CMSetupPanel);
                 PanelForm.PanelDivContainer.appendChild(PanelForm.CMContainer);
-                PanelForm.CreatedContextMenu = true;
+                PanelForm.InvisibleContextMenu = false;
             }
-            PanelForm.CMContainer.style.top = e.clientY + 1 + "px";
-            PanelForm.CMContainer.style.left = e.clientX + 1 + "px";
-            PanelForm.StartTimer = true;
-            PanelForm.CMContainer.addEventListener("mouseenter", MouseEnteredCMContainer);
-            window.setInterval(ContextMenuTimer, 1500);
-            function MouseEnteredCMContainer(){
-                PanelForm.StartTimer = false;
-            }
-            function ContextMenuTimer(){
-                if(PanelForm.StartTimer == true){
-                    alert("HUIIIIIIIIII");
-                    PanelForm.StartTimer = false;
-                }
-                else
-                {
-                        
+            PanelForm.CMContainer.style.top = e.clientY - 3 + "px";
+            PanelForm.CMContainer.style.left = e.clientX - 3 + "px";
+            document.onmousemove = getLocationOfCM;
+            function getLocationOfCM(e){
+                var elTop = PanelForm.CMContainer.getBoundingClientRect().top; 
+                var elLeft = PanelForm.CMContainer.getBoundingClientRect().left;
+                var elBottom = PanelForm.CMContainer.getBoundingClientRect().bottom;
+                var elRight = PanelForm.CMContainer.getBoundingClientRect().right;
+                var mouseX = e.clientX;
+                var mouseY = e.clientY;
+                if(elTop > mouseY || elBottom < mouseY || elLeft > mouseX || elRight < mouseX){
+                    PanelForm.CMContainer.style.display = "none";
+                    PanelForm.InvisibleContextMenu = true;
                 }
             }
-        }
+        }     
     }
 })();
