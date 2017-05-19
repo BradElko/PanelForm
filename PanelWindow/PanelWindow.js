@@ -13,7 +13,10 @@
         PanelForm.CMSetupPanel = document.createElement("div");
         PanelForm.CMSetupText = document.createElement("p");
         PanelForm.BP = document.getElementById("bottomPanel");
+        PanelForm.TP = document.getElementById("topPanel");
         PanelForm.BP.addEventListener("contextmenu", PanelFormContextMenu);
+        PanelForm.TP.addEventListener("contextmenu", DisableContextMenu);
+        window.addEventListener("contextmenu", DisableContextMenu);
     }
     function PanelFormContextMenu(e){
         if(e.which === 3 || e.keyCode === 3 || e.button === 2){
@@ -84,12 +87,7 @@
                 PanelForm.BP.appendChild(PanelForm.ValidClickArea);
                 PanelForm.InvisibleContextMenu = false;
                 //Other
-                PanelForm.CMContainer.addEventListener("contextmenu", DisableSecondContextMenu);
-            }
-            function DisableSecondContextMenu(e){
-                if(e.which === 3 || e.keyCode === 3 || e.button === 2){
-                    e.preventDefault();
-                }
+                PanelForm.CMContainer.addEventListener("contextmenu", DisableContextMenu);
             }
             //Bottom
             if((e.clientY + PanelForm.CMContainer.offsetHeight > window.innerHeight)
@@ -142,6 +140,11 @@
                     PanelForm.InvisibleContextMenu = true;
                 }
             }
-        }     
+        }    
     }
+    function DisableContextMenu(e){
+        if(e.which === 3 || e.keyCode === 3 || e.button === 2){
+            e.preventDefault();
+        }
+    } 
 })();
