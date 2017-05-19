@@ -1,21 +1,40 @@
 (function(){
     var PanelForm = {}
     window.addEventListener("load", PanelFormLoaded);
-    document.addEventListener("contextmenu", PanelFormContextMenu);
     function PanelFormLoaded(){   
         PanelForm.StartTimer = false;
         PanelForm.InvisibleContextMenu = true;
         PanelForm.PanelDivContainer = document.getElementById("container");
+        PanelForm.ValidClickArea = document.createElement("div");
+        PanelForm.InvalidClickArea = document.createElement("div");
         PanelForm.CMContainer = document.createElement("div");
         PanelForm.CMMenuPanel = document.createElement("div");
         PanelForm.CMMenuText = document.createElement("p");
         PanelForm.CMSetupPanel = document.createElement("div");
         PanelForm.CMSetupText = document.createElement("p");
+        PanelForm.BP = document.getElementById("bottomPanel");
+        PanelForm.BP.addEventListener("contextmenu", PanelFormContextMenu);
     }
     function PanelFormContextMenu(e){
         if(e.which === 3 || e.keyCode === 3 || e.button === 2){
             e.preventDefault();
             if(PanelForm.InvisibleContextMenu == true){
+                //ValidClickArea
+                PanelForm.ValidClickArea.style.position = "absolute";
+                PanelForm.ValidClickArea.style.display = "none";
+                PanelForm.ValidClickArea.style.top = 10 + "px"
+                PanelForm.ValidClickArea.style.left = 9 + "px"
+                PanelForm.ValidClickArea.style.width = PanelForm.BP.offsetWidth - 18 + "px";
+                PanelForm.ValidClickArea.style.height = PanelForm.BP.offsetHeight - 20 + "px";
+                PanelForm.ValidClickArea.style.backgroundColor = "Green";
+                //InvalidClickArea
+                PanelForm.InvalidClickArea.style.position = "absolute";
+                PanelForm.InvalidClickArea.style.display = "none";
+                PanelForm.InvalidClickArea.style.top = 0 + "px";
+                PanelForm.InvalidClickArea.style.left = 0 + "px";
+                PanelForm.InvalidClickArea.style.width = PanelForm.BP.offsetWidth + "px";
+                PanelForm.InvalidClickArea.style.height = PanelForm.BP.offsetHeight+ "px";
+                PanelForm.InvalidClickArea.style.backgroundColor = "Red";
                 //Container
                 PanelForm.CMContainer.style.position = "absolute";
                 PanelForm.CMContainer.style.display = "block";
@@ -61,10 +80,55 @@
                 PanelForm.CMContainer.appendChild(PanelForm.CMMenuPanel);
                 PanelForm.CMContainer.appendChild(PanelForm.CMSetupPanel);
                 PanelForm.PanelDivContainer.appendChild(PanelForm.CMContainer);
+                PanelForm.BP.appendChild(PanelForm.InvalidClickArea);
+                PanelForm.BP.appendChild(PanelForm.ValidClickArea);
                 PanelForm.InvisibleContextMenu = false;
+                //Other
+                PanelForm.CMContainer.addEventListener("contextmenu", DisableSecondContextMenu);
             }
-            PanelForm.CMContainer.style.top = e.clientY - 3 + "px";
-            PanelForm.CMContainer.style.left = e.clientX - 3 + "px";
+            function DisableSecondContextMenu(e){
+                if(e.which === 3 || e.keyCode === 3 || e.button === 2){
+                    e.preventDefault();
+                }
+            }
+            //Bottom
+            if((e.clientY + PanelForm.CMContainer.offsetHeight > window.innerHeight)
+                && (window.innerHeight - e.clientY > 9 
+                && e.clientX > 8
+
+                && window.innerWidth - (e.clientX + PanelForm.CMContainer.offsetWidth) > 8)){
+                PanelForm.CMContainer.style.top = e.clientY - PanelForm.CMContainer.offsetHeight + 3 + "px";
+                PanelForm.CMContainer.style.left = e.clientX - 3 + "px";
+            }
+            //Right
+            else if((e.clientX + PanelForm.CMContainer.offsetWidth > window.innerWidth)
+                    && (window.innerWidth - e.clientX > 8
+                    && window.innerHeight - (e.clientY + PanelForm.CMContainer.offsetHeight) > 9
+                    && e.clientY > 39)){
+                PanelForm.CMContainer.style.top = e.clientY - 3 + "px";
+                PanelForm.CMContainer.style.left = e.clientX - PanelForm.CMContainer.offsetWidth + 3 + "px";
+            }
+            //Left
+            else if((e.clientX > 8) 
+                    && (e.clientY + PanelForm.CMContainer.offsetHeight < window.innerHeight - 9
+                    && e.clientX + PanelForm.CMContainer.offsetWidth < window.innerWidth - 8
+                     && e.clientY > 39)){
+                PanelForm.CMContainer.style.top = e.clientY - 3 + "px";
+                PanelForm.CMContainer.style.left = e.clientX - 3 + "px";
+            }
+            //Bottom Right Corner
+            else if((window.innerHeight - e.clientY > 9
+                    && window.innerWidth - e.clientX > 8)
+                    && (window.innerHeight < e.clientY + PanelForm.CMContainer.offsetHeight 
+                    && window.innerWidth < e.clientX + PanelForm.CMContainer.offsetWidth)
+                    && (e.clientX - PanelForm.CMContainer.offsetWidth > 8)){
+                PanelForm.CMContainer.style.top = e.clientY - PanelForm.CMContainer.offsetHeight + 3 + "px";
+                PanelForm.CMContainer.style.left = e.clientX - PanelForm.CMContainer.offsetWidth + 3 + "px";
+            }
+            else{
+                PanelForm.CMContainer.style.display = "none";
+                PanelForm.InvisibleContextMenu = true;
+            }
             document.onmousemove = getLocationOfCM;
             function getLocationOfCM(e){
                 var elTop = PanelForm.CMContainer.getBoundingClientRect().top; 
