@@ -13,8 +13,6 @@ namespace CustomForm_Practice_1
 {
     public partial class rightClickMenu : Form
     {
-        //private
-        bool mouseInControl;
         public rightClickMenu()
         {
             InitializeComponent();
@@ -26,16 +24,6 @@ namespace CustomForm_Practice_1
                 Color.Red, 1, ButtonBorderStyle.Solid,
                 Color.Red, 1, ButtonBorderStyle.Solid,
                 Color.Red, 1, ButtonBorderStyle.Solid);
-        }
-        public static void RightClickMenuSetup()
-        {
-            if (CustomForm.MouseRightClickOverForm)
-            {
-                CustomForm.rightclickmenuform.Show();
-                CustomForm.rightclickmenuform.Location = new Point(Cursor.Position.X - 3, Cursor.Position.Y - 3);
-                CustomForm.rightclickmenuform.BringToFront();
-                CustomForm.MouseRightClickOverForm = false;
-            }
         }
         private void OverPanel_MouseLeave(object sender, EventArgs e)
         {

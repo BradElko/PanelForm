@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.TopPanel = new System.Windows.Forms.Panel();
-            this.BottomPanel = new System.Windows.Forms.Panel();
             this.minimizeB1 = new CustomForm_Practice_1.FlatButton();
             this.maximizeB1 = new CustomForm_Practice_1.FlatButton();
             this.exitB1 = new CustomForm_Practice_1.FlatButton();
+            this.BottomPanel = new System.Windows.Forms.Panel();
             this.TopPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,21 +50,8 @@
             this.TopPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseClick);
             this.TopPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDoubleClick);
             this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
-            this.TopPanel.MouseEnter += new System.EventHandler(this.TopPanel_MouseEnter);
-            this.TopPanel.MouseLeave += new System.EventHandler(this.TopPanel_MouseLeave);
             this.TopPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseMove);
             this.TopPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseUp);
-            // 
-            // BottomPanel
-            // 
-            this.BottomPanel.BackColor = System.Drawing.Color.Silver;
-            this.BottomPanel.Location = new System.Drawing.Point(140, 140);
-            this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(520, 275);
-            this.BottomPanel.TabIndex = 1;
-            this.BottomPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BottomPanel_MouseClick);
-            this.BottomPanel.MouseEnter += new System.EventHandler(this.BottomPanel_MouseEnter);
-            this.BottomPanel.MouseLeave += new System.EventHandler(this.BottomPanel_MouseLeave);
             // 
             // minimizeB1
             // 
@@ -112,6 +99,15 @@
             this.exitB1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.exitB1_MouseDown);
             this.exitB1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.exitB1_MouseUp);
             // 
+            // BottomPanel
+            // 
+            this.BottomPanel.BackColor = System.Drawing.Color.Silver;
+            this.BottomPanel.Location = new System.Drawing.Point(140, 140);
+            this.BottomPanel.Name = "BottomPanel";
+            this.BottomPanel.Size = new System.Drawing.Size(520, 275);
+            this.BottomPanel.TabIndex = 1;
+            this.BottomPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.BottomPanel_MouseClick);
+            // 
             // CustomForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,8 +122,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.CustomForm_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.CustomForm_MouseClick);
-            this.MouseEnter += new System.EventHandler(this.CustomForm_MouseEnter);
-            this.MouseLeave += new System.EventHandler(this.CustomForm_MouseLeave);
             this.Resize += new System.EventHandler(this.CustomForm_Resize);
             this.TopPanel.ResumeLayout(false);
             this.ResumeLayout(false);

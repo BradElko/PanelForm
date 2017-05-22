@@ -14,7 +14,7 @@ namespace CustomForm_Practice_1
     {
         public static bool MouseRightClickOverForm;
         public static rightClickMenu rightclickmenuform;
-        public static bool  mouseEnteredTopPanel, mouseEnteredBotPanel, mouseEnteredForm;
+        public bool  mouseEnteredTopPanel, mouseEnteredBotPanel, mouseEnteredForm;
         bool minimizeB1MouseDown, maximizeB1MouseDown, exitB1MouseDown;
         bool maximizeB1WasPressed;
         bool FormNormalSize;
@@ -28,9 +28,41 @@ namespace CustomForm_Practice_1
             rightclickmenuform = new rightClickMenu();
             FormNormalSize = true;
         }
-        private void OpenRCMOnRightClick()
+        public void RightClickMenuSetup(MouseEventArgs e)
         {
-            rightClickMenu.RightClickMenuSetup();
+            if (MouseRightClickOverForm)
+            {
+                //Left
+                if(e.X > 8
+                    && e.Y + rightclickmenuform.Height < BottomPanel.Height
+                    && BottomPanel.Right - (e.X + rightclickmenuform.Width) > 9
+                    && e.Y > 9)
+                {
+                    rightclickmenuform.Show();
+                    rightclickmenuform.Location = new Point(Cursor.Position.X - 3, Cursor.Position.Y - 3);
+                    rightclickmenuform.BringToFront();
+                }
+                //Bottom
+                else if(BottomPanel.Bottom - (e.Y + 31)> 9
+                    && e.X > 8
+                    && BottomPanel.Right - (e.X + rightclickmenuform.Width)> 9)
+                {
+                    rightclickmenuform.Show();
+                    rightclickmenuform.Location = new Point(Cursor.Position.X - 3, Cursor.Position.Y - rightclickmenuform.Height + 3);
+                    rightclickmenuform.BringToFront();
+                }
+                //Right
+                else if(BottomPanel.Right - e.X > 9
+                    && BottomPanel.Bottom >  (e.Y + rightclickmenuform.Height + 31)
+                    && e.X > 8
+                    && e.Y > 9)
+                {
+                    rightclickmenuform.Show();
+                    rightclickmenuform.Location = new Point(Cursor.Position.X - rightclickmenuform.Width + 3, Cursor.Position.Y - 3);
+                    rightclickmenuform.BringToFront();
+                }
+                MouseRightClickOverForm = false;
+            }
         }
         private void CustomForm_Resize(object sender, EventArgs e)
         {
@@ -82,14 +114,7 @@ namespace CustomForm_Practice_1
             if (e.Button == MouseButtons.Right)
             {
                 MouseRightClickOverForm = true;
-                OpenRCMOnRightClick();
             }
-        }
-        private void CustomForm_MouseEnter(object sender, EventArgs e)
-        {
-        }
-        private void CustomForm_MouseLeave(object sender, EventArgs e)
-        {
         }
         private void TopPanel_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -101,17 +126,7 @@ namespace CustomForm_Practice_1
         }
         private void TopPanel_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                MouseRightClickOverForm = true;
-                OpenRCMOnRightClick();
-            }
-        }
-        private void TopPanel_MouseEnter(object sender, EventArgs e)
-        {
-        }
-        private void TopPanel_MouseLeave(object sender, EventArgs e)
-        {
+            AdjustingTheForm = false;
         }
         private void TopPanel_MouseDown(object sender, MouseEventArgs e)
         {
@@ -191,15 +206,8 @@ namespace CustomForm_Practice_1
             if (e.Button == MouseButtons.Right)
             {
                 MouseRightClickOverForm = true;
-                OpenRCMOnRightClick();
+                RightClickMenuSetup(e);
             }
-        }
-
-        private void BottomPanel_MouseEnter(object sender, EventArgs e)
-        {
-        }
-        private void BottomPanel_MouseLeave(object sender, EventArgs e)
-        {
         }
         private void minimizeB1_Paint(object sender, PaintEventArgs e)
         {
@@ -219,6 +227,7 @@ namespace CustomForm_Practice_1
             minimizeB1MouseDown = true;
             AdjustingTheForm = false;
         }
+
         private void minimizeB1_MouseUp(object sender, MouseEventArgs e)
         {
             minimizeB1MouseDown = false;
