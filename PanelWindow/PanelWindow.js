@@ -89,32 +89,45 @@
                 //Other
                 PanelForm.CMContainer.addEventListener("contextmenu", DisableContextMenu);
             }
-            //Bottom
-            if((e.clientY + PanelForm.CMContainer.offsetHeight > window.innerHeight)
-                && (window.innerHeight - e.clientY > 9 
-                && e.clientX > 8
-
-                && window.innerWidth - (e.clientX + PanelForm.CMContainer.offsetWidth) > 8)){
-                PanelForm.CMContainer.style.top = e.clientY - PanelForm.CMContainer.offsetHeight + 3 + "px";
+            //Left
+            if((e.clientX > 8) 
+                    && (e.clientY + PanelForm.CMContainer.offsetHeight < window.innerHeight - 9
+                    && e.clientX + PanelForm.CMContainer.offsetWidth < window.innerWidth - 8
+                    && e.clientX + (PanelForm.CMContainer.offsetWidth / 2) < (window.innerWidth / 2)
+                    && e.clientY + (PanelForm.CMContainer.offsetHeight / 2) < (window.innerHeight / 2)
+                    && e.clientY > 39)){
+                PanelForm.CMContainer.style.top = e.clientY - 3 + "px";
                 PanelForm.CMContainer.style.left = e.clientX - 3 + "px";
             }
+            //Top Middle
+            else if(e.clientY < (window.innerHeight / 2)
+                    && e.clientX + (PanelForm.CMContainer.offsetWidth / 2) < (window.innerWidth / 2) 
+                    || e.clientX + (PanelForm.CMContainer.offsetWidth / 2) == (window.innerWidth / 2) 
+                    || e.clientX + (PanelForm.CMContainer.offsetWidth / 2) > (window.innerWidth / 2)
+                    && (window.innerWidth / 2) - e.clientX < 151
+                    && e.clientX - (window.innerWidth / 2) < 151){
+                PanelForm.CMContainer.style.top = e.clientY - 3 + "px";
+                PanelForm.CMContainer.style.left = e.clientX - (PanelForm.CMContainer.offsetWidth/2) + 3 + "px";
+            }
             //Right
-            else if((e.clientX + PanelForm.CMContainer.offsetWidth > window.innerWidth)
+            else if((window.innerWidth - e.clientX > 9)
                     && (window.innerWidth - e.clientX > 8
                     && window.innerHeight - (e.clientY + PanelForm.CMContainer.offsetHeight) > 9
+                    && e.clientX + (PanelForm.CMContainer.offsetWidth / 2) > (window.innerWidth / 2)
+                    && e.clientY + (PanelForm.CMContainer.offsetHeight / 2) < (window.innerHeight / 2)
                     && e.clientY > 39)){
                 PanelForm.CMContainer.style.top = e.clientY - 3 + "px";
                 PanelForm.CMContainer.style.left = e.clientX - PanelForm.CMContainer.offsetWidth + 3 + "px";
             }
-            //Left
-            else if((e.clientX > 8) 
-                    && (e.clientY + PanelForm.CMContainer.offsetHeight < window.innerHeight - 9
-                    && e.clientX + PanelForm.CMContainer.offsetWidth < window.innerWidth - 8
-                     && e.clientY > 39)){
-                PanelForm.CMContainer.style.top = e.clientY - 3 + "px";
+            //Bottom Left
+            else if((e.clientY + PanelForm.CMContainer.offsetHeight > window.innerHeight)
+                && (window.innerHeight - e.clientY > 9 
+                && e.clientX > 8
+                && window.innerWidth - (e.clientX + PanelForm.CMContainer.offsetWidth) > 8)){
+                PanelForm.CMContainer.style.top = e.clientY - PanelForm.CMContainer.offsetHeight + 3 + "px";
                 PanelForm.CMContainer.style.left = e.clientX - 3 + "px";
             }
-            //Bottom Right Corner
+            //Bottom Right
             else if((window.innerHeight - e.clientY > 9
                     && window.innerWidth - e.clientX > 8)
                     && (window.innerHeight < e.clientY + PanelForm.CMContainer.offsetHeight 
