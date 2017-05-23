@@ -35,30 +35,73 @@ namespace CustomForm_Practice_1
                 //Left
                 if(e.X > 8
                     && e.Y + rightclickmenuform.Height < BottomPanel.Height
-                    && BottomPanel.Right - (e.X + rightclickmenuform.Width) > 9
-                    && e.Y > 9)
+                    && BottomPanel.Right - (e.X + rightclickmenuform.Width) > 8
+                    && e.Y > 9
+                    && ((e.X + rightclickmenuform.Width / 2) < BottomPanel.Right / 2)
+                    && (e.Y + 31) < BottomPanel.Bottom / 2)
                 {
                     rightclickmenuform.Show();
                     rightclickmenuform.Location = new Point(Cursor.Position.X - 3, Cursor.Position.Y - 3);
                     rightclickmenuform.BringToFront();
                 }
-                //Bottom
-                else if(BottomPanel.Bottom - (e.Y + 31)> 9
+                //Top Middle
+                else if(e.Y + 31 < BottomPanel.Bottom / 2
+                    && ((e.X + rightclickmenuform.Width / 2) < BottomPanel.Right / 2 
+                    || (e.X + rightclickmenuform.Width / 2) == BottomPanel.Right / 2
+                    || (e.X + rightclickmenuform.Width / 2) > BottomPanel.Right / 2)
+                    && BottomPanel.Bottom / 2 - e.X < 151
+                    && e.X - BottomPanel.Bottom / 2 < 151)
+                {
+                    rightclickmenuform.Show();
+                    rightclickmenuform.Location = new Point(Cursor.Position.X - rightclickmenuform.Width / 2, Cursor.Position.Y - 3);
+                    rightclickmenuform.BringToFront();
+                }
+                //Right
+                else if (BottomPanel.Right - e.X > 8
+                    && BottomPanel.Bottom > (e.Y + rightclickmenuform.Height + 31)
                     && e.X > 8
-                    && BottomPanel.Right - (e.X + rightclickmenuform.Width)> 9)
+                    && e.Y > 9
+                    && (e.X + rightclickmenuform.Width / 2) > BottomPanel.Right / 2
+                    && (e.Y + 31) < BottomPanel.Bottom / 2)
+                {
+                    rightclickmenuform.Show();
+                    rightclickmenuform.Location = new Point(Cursor.Position.X - rightclickmenuform.Width + 3, Cursor.Position.Y - 3);
+                    rightclickmenuform.BringToFront();
+                }
+                //Bottom Left
+                else if(BottomPanel.Bottom - (e.Y + 31) > 9
+                    && e.X > 8
+                    && e.Y > 9
+                    && BottomPanel.Right - (e.X + rightclickmenuform.Width)> 8
+                    && (e.X + rightclickmenuform.Width / 2) < BottomPanel.Right / 2
+                    && (e.Y + 31) > BottomPanel.Bottom / 2)
                 {
                     rightclickmenuform.Show();
                     rightclickmenuform.Location = new Point(Cursor.Position.X - 3, Cursor.Position.Y - rightclickmenuform.Height + 3);
                     rightclickmenuform.BringToFront();
                 }
-                //Right
-                else if(BottomPanel.Right - e.X > 9
-                    && BottomPanel.Bottom >  (e.Y + rightclickmenuform.Height + 31)
-                    && e.X > 8
-                    && e.Y > 9)
+                //Bottom Middle
+                else if (e.Y + 31 > BottomPanel.Bottom / 2
+                    && ((e.X + rightclickmenuform.Width / 2) < BottomPanel.Right / 2
+                    || (e.X + rightclickmenuform.Width / 2) == BottomPanel.Right / 2
+                    || (e.X + rightclickmenuform.Width / 2) > BottomPanel.Right / 2)
+                    && BottomPanel.Bottom / 2 - e.X < 151
+                    && e.X - BottomPanel.Bottom / 2 < 151)
                 {
                     rightclickmenuform.Show();
-                    rightclickmenuform.Location = new Point(Cursor.Position.X - rightclickmenuform.Width + 3, Cursor.Position.Y - 3);
+                    rightclickmenuform.Location = new Point(Cursor.Position.X - rightclickmenuform.Width / 2, Cursor.Position.Y - rightclickmenuform.Height + 3);
+                    rightclickmenuform.BringToFront();
+                }
+                //Bottom Right
+                else if(BottomPanel.Right - 8 > e.X
+                    && e.X > 8
+                    && e.Y > 9
+                    && BottomPanel.Bottom - 9 > e.Y + 31
+                    && (e.X + rightclickmenuform.Width / 2) > BottomPanel.Right / 2
+                    && (e.Y + 31) > BottomPanel.Bottom / 2)
+                {
+                    rightclickmenuform.Show();
+                    rightclickmenuform.Location = new Point(Cursor.Position.X - rightclickmenuform.Width + 3, Cursor.Position.Y - rightclickmenuform.Height + 3);
                     rightclickmenuform.BringToFront();
                 }
                 MouseRightClickOverForm = false;
