@@ -83,7 +83,10 @@
             this.OverPanel.Opacity = 0;
             this.OverPanel.Size = new System.Drawing.Size(152, 62);
             this.OverPanel.TabIndex = 3;
+            this.OverPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OverPanel_MouseDown);
             this.OverPanel.MouseLeave += new System.EventHandler(this.OverPanel_MouseLeave);
+            this.OverPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.OverPanel_MouseMove);
+            this.OverPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OverPanel_MouseUp);
             // 
             // rightClickMenu
             // 
