@@ -20,3 +20,14 @@ H:\SEWD1\C#\Practice Code\PanelForm\obj\Debug\CustomForm_Practice_1.rightClickMe
 H:\SEWD1\C#\Practice Code\PanelForm\obj\Debug\CustomForm_Practice_1.Properties.Resources.resources
 H:\SEWD1\C#\Practice Code\PanelForm\obj\Debug\CustomForm_Practice_1.rcm.resources
 H:\SEWD1\C#\Practice Code\PanelForm\obj\Debug\CustomForm_Practice_1.csproj.GenerateResource.Cache
+C:\Users\Uvozi\Downloads\PanelForm-master\PanelForm-master\PanelForm\bin\Debug\CustomForm_Practice_1.exe.config
+C:\Users\Uvozi\Downloads\PanelForm-master\PanelForm-master\PanelForm\obj\Debug\CustomForm_Practice_1.exe
+C:\Users\Uvozi\Downloads\PanelForm-master\PanelForm-master\PanelForm\obj\Debug\CustomForm_Practice_1.pdb
+C:\Users\Uvozi\Downloads\PanelForm-master\PanelForm-master\PanelForm\bin\Debug\CustomForm_Practice_1.exe
+C:\Users\Uvozi\Downloads\PanelForm-master\PanelForm-master\PanelForm\bin\Debug\CustomForm_Practice_1.pdb
+C:\Users\Uvozi\Downloads\PanelForm-master\PanelForm-master\PanelForm\obj\Debug\CustomForm_Practice_1.csprojResolveAssemblyReference.cache
+C:\Users\Uvozi\Downloads\PanelForm-master\PanelForm-master\PanelForm\obj\Debug\CustomForm_Practice_1.CustomForm.resources
+C:\Users\Uvozi\Downloads\PanelForm-master\PanelForm-master\PanelForm\obj\Debug\CustomForm_Practice_1.rightClickMenu.resources
+C:\Users\Uvozi\Downloads\PanelForm-master\PanelForm-master\PanelForm\obj\Debug\CustomForm_Practice_1.Properties.Resources.resources
+C:\Users\Uvozi\Downloads\PanelForm-master\PanelForm-master\PanelForm\obj\Debug\CustomForm_Practice_1.rcm.resources
+C:\Users\Uvozi\Downloads\PanelForm-master\PanelForm-master\PanelForm\obj\Debug\CustomForm_Practice_1.csproj.GenerateResource.Cache
